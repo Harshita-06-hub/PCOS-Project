@@ -1,0 +1,81 @@
+---
+title: "PCOS analysis"
+author: "Harshita Singh"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggcorrplot)
+```
+
+##  Load the Data
+
+```{r load-data}
+pcos <- read_csv("PCOS_Lucas_Souza.csv")
+head(pcos)
+```
+
+##  Data Overview
+
+```{r summary}
+glimpse(pcos)
+summary(pcos)
+colSums(is.na(pcos))
+```
+
+##  BMI by PCOS Diagnosis
+
+```{r bmi-plot}
+pcos$PCOS_Diagnosis <- as.factor(pcos$PCOS_Diagnosis)
+ggplot(pcos, aes(x = PCOS_Diagnosis, y = BMI)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "BMI vs PCOS Diagnosis", x = "PCOS Diagnosis", y = "BMI")
+```
+
+##  Testosterone Levels by Diagnosis
+
+```{r testosterone-plot}
+ggplot(pcos, aes(x = PCOS_Diagnosis, y = `Testosterone_Level(ng/dL)`)) +
+  geom_boxplot(fill = "salmon") +
+  labs(title = "Testosterone Levels by PCOS Diagnosis", x = "PCOS Diagnosis", y = "Testosterone (ng/dL)")
+```
+
+##  Antral Follicle Count by Diagnosis
+
+```{r follicle-plot}
+ggplot(pcos, aes(x = PCOS_Diagnosis, y = Antral_Follicle_Count)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Antral Follicle Count by PCOS Diagnosis", x = "PCOS Diagnosis", y = "Follicle Count")
+```
+
+##  Menstrual Irregularity by PCOS Diagnosis
+
+```{r period-plot}
+ggplot(pcos, aes(x = Menstrual_Irregularity, fill = PCOS_Diagnosis)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Menstrual Irregularity by PCOS Diagnosis", x = "Menstrual Irregularity", fill = "PCOS Diagnosis")
+```
+
+##  Correlation Heatmap
+
+```{r correlation-plot}
+pcos_numeric <- pcos %>%
+  mutate(PCOS_Diagnosis = as.numeric(as.character(PCOS_Diagnosis))) %>%
+  select(Age, BMI, `Testosterone_Level(ng/dL)`, Antral_Follicle_Count, Menstrual_Irregularity, PCOS_Diagnosis)
+
+cor_matrix <- cor(pcos_numeric, use = "complete.obs")
+ggcorrplot(cor_matrix, lab = TRUE, type = "lower")
+```
+
+## ✅  Conclusion
+
+- Testosterone levels and follicle counts are higher in women diagnosed with PCOS.
+- BMI and menstrual irregularities also show association with PCOS.
+- Correlation analysis supports clinical insights about PCOS pathophysiology.
+
