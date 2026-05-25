@@ -4,7 +4,7 @@
 
 ---
 
-### 🎯 The Business/Clinical Problem
+### 🎯 The Clinical Problem
 Clinical datasets are notoriously messy, characterized by heterogeneous variables, missing values, and inconsistent formatting. This project establishes a **standardized, modular R-based pipeline** to transform raw clinical PCOS records into actionable insights, enabling disease stratification and data-driven hypothesis generation.
 
 ### 🚀 Key Technical Highlights
