@@ -1,23 +1,36 @@
-# PCOS Data Analysis in R
-Beginner-friendly end-to-end analysis of a PCOS clinical dataset, focusing on clean data handling, EDA, and clear visuals.
+# PCOS Clinical Data Analytics Pipeline
+**Role:** Data Analyst & Researcher  
+**Focus:** Clinical Data Standardization, Exploratory Data Analysis (EDA), & Reproducible Research
 
-Highlights - 
-- Cleaned and prepared data: handled missing values, fixed types (e.g., BMI → numeric), and created factors for plotting.
+---
 
-- Explored key variables: Age, BMI, AMH, LH/FSH ratio, insulin; compared PCOS vs Non‑PCOS groups.
+### 🎯 The Business/Clinical Problem
+Clinical datasets are notoriously messy, characterized by heterogeneous variables, missing values, and inconsistent formatting. This project establishes a **standardized, modular R-based pipeline** to transform raw clinical PCOS records into actionable insights, enabling disease stratification and data-driven hypothesis generation.
 
-- Visualized distributions and relationships: histograms, boxplots (e.g., BMI by PCOS status), scatterplots, and a correlation heatmap using ggplot2.
+### 🚀 Key Technical Highlights
+* **Reproducible Workflow:** Designed a modular pipeline (`data_cleaning.R` → `eda.R` → `visuals.R`) using `tidyverse` standards, ensuring the analysis is auditable and scalable.
+* **Data Sanitization:** Implemented rigorous cleaning protocols for clinical variables, including numeric conversion of BMI/hormonal profiles, factor-level harmonization, and outlier management.
+* **Statistical Visualization:** Utilized `ggplot2` to generate high-fidelity clinical markers (LH/FSH ratios, insulin dynamics, BMI stratification), identifying phenotypic variance between cohorts.
+* **Automated Reporting:** Leveraged `RMarkdown` to bridge the gap between raw data processing and final interpretable reporting.
 
-- Reproducible workflow with organized scripts and an R Markdown report for analyses and plots.
+### 🛠 Tech Stack
+* **Language:** R (Expert: Biostatistics, Data Automation)
+* **Framework:** `tidyverse` (dplyr, tidyr, readr)
+* **Visualization:** `ggplot2` (custom themes & aesthetic mapping)
+* **Workflow:** `RMarkdown` (Automated report generation)
 
-Tech Stack - 
-R, tidyverse (dplyr, tidyr, readr), ggplot2
+### 📈 Analytical Workflow
+| Phase | Objective | Output |
+| :--- | :--- | :--- |
+| **Data Cleaning** | Sanitize & structure raw records | Cleaned clinical dataset |
+| **EDA** | Comparative phenotypic analysis | Cohort-specific insights |
+| **Visualization** | Feature correlation heatmaps | Stratification markers |
 
-What I Learned - 
-Practical data cleaning, EDA best practices, and plotting; set up a modular, reproducible workflow suitable for extension.
+### 🚀 How to Run
+```bash
+# 1. Install dependencies
+install.packages(c("tidyverse", "ggplot2"))
 
-How to Run - 
-Install packages: tidyverse, ggplot2
-
-Execute scripts in order: data_cleaning.R → eda.R → visuals.R
-OR knit the R Markdown report to generate the full analysis.
+# 2. Execute pipeline
+# Run in sequence: data_cleaning.R -> eda.R -> visuals.R
+# OR knit the RMarkdown report to generate the full automated analysis.
